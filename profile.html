@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Page</title>
+    <!-- <script src="https://cdn.tailwindcss.com"></script>
+      -->
+    <link rel="stylesheet" href="./src/output.css">
+    </head>
+  <body class="bg-white min-h-screen">
+    <header>
+      <div class="container mx-auto p-4">
+        <div class="flex justify-between items-center">
+          <div
+            class="w-12 h-12 bg-black rounded-full flex items-center justify-center text-gold font-bold shadow-md"
+          >
+            <span class="text-yellow-400 font-serif">K&T</span>
+          </div>
+          <!-- Right Side -->
+          <div class="flex items-center space-x-4 relative">
+            <!-- Bell Icon -->
+            <button
+              id="notifyBtn"
+              class="p-2 rounded-full hover:bg-gray-100 transition"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 text-gray-700"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M14 10V6a4 4 0 00-8 0v4a6 6 0 00-4 5v2h16v-2a6 6 0 00-4-5z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M9 18h6a2 2 0 11-4 0"
+                />
+              </svg>
+            </button>
+            <!-- Notification Panel -->
+            <div
+              id="notifyPanel"
+              class="hidden fixed top-16 right-4 w-80 max-h-[80vh] bg-white rounded-xl shadow-lg flex-col overflow-hidden"
+            >
+              <!-- Header -->
+              <div class="flex items-center justify-between px-4 py-3 border-b">
+                <h2 class="font-semibold text-lg">Notifications</h2>
+                <button id="closePanel" class="text-gray-500 hover:text-black">
+                  ✖
+                </button>
+              </div>
+
+              <!-- Notification List -->
+              <div class="flex-1 overflow-y-auto divide-y">
+                <!-- Item 1 -->
+                <div class="flex items-start gap-3 px-4 py-3">
+                  <i class="fa-solid fa-person-dress"></i>
+                  <div class="text-sm">
+                    <p>
+                      <b>Lois Griffin</b> commented in 🐶
+                      <b>Take Brian on a walk</b>
+                    </p>
+                    <p class="text-gray-500 text-xs">
+                      11 hours ago · Task List
+                    </p>
+                    <p class="text-gray-500 text-xs">
+                      Assigned to Peter Griffin
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="flex items-start gap-3 px-4 py-3">
+                  <i class="fa-solid fa-person-dress"></i>
+                  <div class="text-sm">
+                    <p>
+                      <b>Glenn Quagmire</b> commented in 🐶
+                      <b>Take Brian on a walk</b>
+                    </p>
+                    <p class="text-gray-500 text-xs">
+                      11 hours ago · Task List
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="flex items-start gap-3 px-4 py-3">
+                  <i class="fa-solid fa-person-dress"></i>
+                  <div class="text-sm">
+                    <p>
+                      <b>Lois Griffin</b> commented in 🐶
+                      <b>Take Brian on a walk</b>
+                    </p>
+                    <p class="text-gray-500 text-xs">
+                      11 hours ago · Task List
+                    </p>
+                    <p class="text-gray-500 text-xs">
+                      Assigned to Peter Griffin
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Footer -->
+              <div
+                class="flex justify-between items-center px-4 py-3 border-t bg-gray-50"
+              >
+                <button
+                  class="bg-yellow-700 text-white px-3 py-2 rounded-lg text-sm"
+                >
+                  Mark All Read ✓
+                </button>
+                <button class="border px-3 py-2 rounded-lg text-sm">
+                  See All
+                </button>
+              </div>
+            </div>
+            <!-- Profile Dropdown -->
+            <div class="relative">
+              <!-- Profile Button -->
+              <button
+                id="profileBtn"
+                class="p-1 rounded-full hover:ring-2 hover:ring-purple-300 transition"
+              >
+                <img
+                  src="https://i.pravatar.cc/40"
+                  alt="User"
+                  class="w-9 h-9 rounded-full"
+                />
+              </button>
+
+              <!-- Dropdown Menu -->
+              <div
+                id="profileDropdownMenu"
+                class="hidden absolute right-0 mt-3 w-48 bg-white rounded-lg shadow-lg ring-1 ring-black/10 origin-top-right transform transition-all duration-200 scale-95 opacity-0"
+              >
+                <ul class="py-2 text-gray-700">
+                  <li>
+                    <button
+                      class="flex items-center gap-2 w-full text-left px-4 py-2 hover:bg-gray-100 transition"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 text-gray-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M5.121 17.804A13.937 13.937 0 0112 15c2.485 0 4.79.657 6.879 1.804M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                      Profile
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      class="flex items-center gap-2 w-full text-left px-4 py-2 hover:bg-gray-100 transition"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 text-gray-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M17 16l4-4m0 0l-4-4m4 4H7"
+                        />
+                      </svg>
+                      Log Out
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <!-- Profile Section -->
+      <section class="profile-section">
+        <div class="flex flex-col items-center py-10">
+          <!-- Profile Header -->
+          <div class="text-center mt-6">
+            <h1 class="text-2xl font-bold text-gray-800">Profile</h1>
+            <p class="text-gray-500">
+              Manage your account settings and preferences
+            </p>
+          </div>
+
+          <!-- Profile Image -->
+          <div class="flex justify-center mt-6">
+            <div
+              class="relative w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-8 h-8 text-gray-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 7h2l2-3h10l2 3h2a2 2 0 012 2v11a2 2 0 01-2 2H3a2 2 0 01-2-2V9a2 2 0 012-2z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Forms Section -->
+          <div class="grid md:grid-cols-2 gap-10 mt-10 w-11/12 max-w-4xl">
+            <!-- Personal Details -->
+            <div class="bg-white shadow rounded-xl p-6">
+              <div class="flex justify-between items-center mb-4">
+                <h2 class="font-semibold text-gray-800">Personal Details</h2>
+                <button class="text-gray-500 hover:text-gray-700">✏️</button>
+              </div>
+              <div class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    placeholder="First Name"
+                    value="Jenny"
+                    class="w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring focus:ring-indigo-300"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    value="Wilson"
+                    class="w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring focus:ring-indigo-300"
+                  />
+                </div>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value="alma.lawson@example.com"
+                  class="w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring focus:ring-indigo-300"
+                />
+                <input
+                  type="text"
+                  placeholder="Phone Number"
+                  value="0412 345 678"
+                  class="w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring focus:ring-indigo-300"
+                />
+              </div>
+            </div>
+
+            <!-- Account Password -->
+            <div class="bg-white shadow rounded-xl p-6">
+              <div class="flex justify-between items-center mb-4">
+                <h2 class="font-semibold text-gray-800">Account Password</h2>
+                <button class="text-gray-500 hover:text-gray-700">✏️</button>
+              </div>
+              <div class="space-y-4">
+                <input
+                  type="password"
+                  placeholder="Old Password"
+                  value="******"
+                  class="w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring focus:ring-indigo-300"
+                />
+                <input
+                  type="password"
+                  placeholder="New Password"
+                  value="******"
+                  class="w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring focus:ring-indigo-300"
+                />
+                <input
+                  type="password"
+                  placeholder="Confirm New Password"
+                  value="******"
+                  class="w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring focus:ring-indigo-300"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="./src/main.js"></script>
+  </body>
+</html>
